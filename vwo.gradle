@@ -1,0 +1,15 @@
+configurations.all {
+  repositories {
+    maven {
+      url 'https://raw.githubusercontent.com/wingify/vwo-mobile-android/master/'
+    }
+  }
+
+  dependencies {
+    compile('io.socket:socket.io-client:0.6.1') {
+            exclude group: 'org.json', module: 'json'
+    }
+    compile 'com.vwo:mobile:0.3.10@aar'
+  }
+
+}

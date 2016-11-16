@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-vwo" version="0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordova-plugin-vwo</name>
+
+    <js-module name="cordova-plugin-vwo" src="www/cordova-plugin-vwo.js">
+        <clobbers target="Vwo" />
+    </js-module>
+
+    <!-- <hook type="after_platform_add" src="hooks/addEmbedded.js" />
+    <hook type="after_plugin_add" src="hooks/addEmbedded.js" /> -->
+
+    <!-- Android -->
+    <platform name="android">
+      <config-file target="AndroidManifest.xml" parent="/manifest">
+          <uses-permission android:name="android.permission.INTERNET" />
+          <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+      </config-file>
+
+      <source-file src="src/android/VWOCordova.java" target-dir="src/de/aboutyou/vwocordova" />
+
+      <config-file target="config.xml" parent="/*">
+          <feature name="VWOCordova">
+              <param name="android-package" value="de.aboutyou.vwocordova.VWOCordova"/>
+          </feature>
+      </config-file>
+
+      <framework src="vwo.gradle" custom="true" type="gradleReference" />
+    </platform>
+
+    <!-- iOS -->
+    <platform name="ios">
+      <config-file target="config.xml" parent="/*">
+          <feature name="VWOCordova">
+              <param name="ios-package" value="VWOCordova" />
+          </feature>
+      </config-file>
+
+      <pods-config ios-min-version="8.0" uses-frameworks="true"/>
+      <pod id="VWO" version="1.5.0" />
+
+      <header-file src="src/ios/VWOCordova.h" target-dir="ios"/>
+      <source-file src="src/ios/VWOCordova.m" target-dir="ios"/>
+      <header-file src="src/ios/NSDictionary+BVJSONString.h" target-dir="ios"/>
+      <source-file src="src/ios/NSDictionary+BVJSONString.m" target-dir="ios"/>
+
+      <!-- <framework src="src/ios/VWO.framework" custom="true" embed="true" /> -->
+    </platform>
+</plugin>

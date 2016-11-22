@@ -1,5 +1,5 @@
 # cordova-plugin-vwo
-VWO Cordova plugin for Cordova and iOS
+VWO Cordova plugin for Android and iOS
 
 ## Installation
 In order for the plugin to work properly with a cordova project, you have to also install `cordova-plugin-cocoapod-support`. 
